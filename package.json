@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hexo g && sh move.sh"
+    "build": "hexo g"
   },
   "hexo": {
     "version": "3.8.0"
