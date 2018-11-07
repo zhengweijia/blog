@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="zhengxiaoerdd | zhengxioaer&#39;s blog | 郑佳 | 郑小二">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="郑小二">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Node 中用 ESLint 验证代码">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="$">
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined">
+    
+
+    <!-- Title -->
+    
+    <title>Node 中用 ESLint 验证代码 - $</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/blog/">LIVING</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/blog/">Home</a>
+                    </li>
+                
+                    <li>
+                        <a href="/blog/archives">Archives</a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Node 中用 ESLint 验证代码</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2018-11-07
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/blog/tags/ESLint/">#ESLint</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Node-中用-ESLint-验证代码"><a href="#Node-中用-ESLint-验证代码" class="headerlink" title="Node 中用 ESLint 验证代码"></a>Node 中用 ESLint 验证代码</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>ESLint 我们一般用在项目工程里，用来监督我们的代码格式、风格等；</p>
+<p>另外也能用来检验一段代码字符串是不是符合规则。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//可以对 code 这个字符串进行验证，例如我们不允许使用 location.href</span></span><br><span class="line"><span class="keyword">let</span> code = <span class="string">'location.href="zhengxiaoer.cn";'</span>;</span><br></pre></td></tr></table></figure>
+<p>使用场景：当这段代码串是用户提供的时候时，我们可以静态的进行一些验证（当然，由于 JavaScript 太灵活，这样的验证完全限制不了用户，能绕过的方法太多）。</p>
+<h3 id="怎么用-官方文档"><a href="#怎么用-官方文档" class="headerlink" title="怎么用 官方文档"></a>怎么用 <a href="https://eslint.bootcss.com/docs/4.0.0/developer-guide/nodejs-api/" target="_blank" rel="noopener">官方文档</a></h3><p>1、先安装 <code>ESLint</code> ， <code>npm install -s eslint</code> 或 <code>yarn add eslint</code></p>
+<p>2、代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Linter = <span class="built_in">require</span>(<span class="string">"eslint"</span>).Linter;</span><br><span class="line"><span class="comment">// 检查的配置</span></span><br><span class="line"><span class="keyword">const</span> CONFIG = &#123;</span><br><span class="line">  <span class="string">"parser"</span>: <span class="string">"babel-eslint"</span>,</span><br><span class="line">  <span class="string">"env"</span>: &#123;</span><br><span class="line">    <span class="string">"browser"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"es6"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// rules 参考官方文档 https://eslint.bootcss.com/docs/rules/</span></span><br><span class="line">  rules: &#123;</span><br><span class="line">    <span class="string">'no-eval'</span>: <span class="number">2</span>,<span class="comment">//不能使用 eval </span></span><br><span class="line">    <span class="string">'no-with'</span>: <span class="number">2</span>,<span class="comment">//不能使用 with </span></span><br><span class="line">    <span class="string">'no-delete-var'</span>: <span class="number">2</span>,<span class="comment">//不能删除变量 delete a; </span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等待验证的代码</span></span><br><span class="line"><span class="keyword">let</span> code = <span class="string">'eval("console.log(1+1)")'</span>;</span><br><span class="line"><span class="comment">// 初始化验证对象</span></span><br><span class="line"><span class="keyword">let</span> linter = <span class="keyword">new</span> Linter();</span><br><span class="line"><span class="comment">// 开始验证</span></span><br><span class="line"><span class="comment">// messages 为返回的验证结果，数据结构可以查看文档 https://eslint.bootcss.com/docs/4.0.0/developer-guide/nodejs-api/</span></span><br><span class="line"><span class="keyword">let</span> messages = linter.verify(code, CONFIG);</span><br></pre></td></tr></table></figure>
+<h3 id="定制自己的规则"><a href="#定制自己的规则" class="headerlink" title="定制自己的规则"></a>定制自己的规则</h3><p>1、新建 myrule.js， <a href="https://eslint.bootcss.com/docs/developer-guide/working-with-rules/" target="_blank" rel="noopener">官方文档</a> ，一开始可能不知道怎么下手写代码，可以参考官方的验证规则源代码，进行模仿</p>
+<p>假如实现对所有调用 location.href 的都不通过：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    meta: &#123;     </span><br><span class="line">    &#125;,   </span><br><span class="line">    create(context) &#123; </span><br><span class="line">        <span class="comment">// 返回需要对 AST 进行判断</span></span><br><span class="line">        <span class="comment">//这个网址可以快速查看代码生成的 AST https://astexplorer.net</span></span><br><span class="line">        <span class="keyword">return</span> &#123;  </span><br><span class="line">            <span class="comment">// 对所有调用 location.href 的都不通过</span></span><br><span class="line">            MemberExpression: <span class="function">(<span class="params">node</span>)=&gt;</span>&#123;</span><br><span class="line">                <span class="keyword">let</span> objName = node.object.name;</span><br><span class="line">                <span class="keyword">let</span> propertyName = node.property.name;</span><br><span class="line">                <span class="keyword">if</span>((<span class="regexp">/^location$/</span>).test(objName) &amp;&amp; (<span class="regexp">/^href/</span>).test(propertyName)) &#123;</span><br><span class="line">                    <span class="comment">// 返回错误数据</span></span><br><span class="line">                    context.report(&#123;</span><br><span class="line">                        node,</span><br><span class="line">                        message: <span class="string">"不能使用 &#123;&#123;objName&#125;&#125;.&#123;&#123;propertyName&#125;&#125;"</span>,</span><br><span class="line">                        data: &#123;</span><br><span class="line">                            objName,</span><br><span class="line">                            propertyName</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;   </span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>2、eslint 绑定我们的验证</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Linter = <span class="built_in">require</span>(<span class="string">"eslint"</span>).Linter;</span><br><span class="line"><span class="comment">// 检查的配置</span></span><br><span class="line"><span class="keyword">const</span> CONFIG = &#123;</span><br><span class="line">  <span class="string">"parser"</span>: <span class="string">"babel-eslint"</span>,</span><br><span class="line">  <span class="string">"env"</span>: &#123;</span><br><span class="line">    <span class="string">"browser"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"es6"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// rules 参考官方文档 https://eslint.bootcss.com/docs/rules/</span></span><br><span class="line">  rules: &#123;</span><br><span class="line">    <span class="string">'no-eval'</span>: <span class="number">2</span>,<span class="comment">//不能使用 eval </span></span><br><span class="line">    <span class="string">'no-with'</span>: <span class="number">2</span>,<span class="comment">//不能使用 with </span></span><br><span class="line">    <span class="string">'no-delete-var'</span>: <span class="number">2</span>,<span class="comment">//不能删除变量 delete a; </span></span><br><span class="line">    </span><br><span class="line">    <span class="string">'myrule'</span>:<span class="number">2</span>, <span class="comment">//使用我们的规则</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等待验证的代码</span></span><br><span class="line"><span class="keyword">let</span> code = <span class="string">'eval("console.log(1+1)")'</span>;</span><br><span class="line"><span class="comment">// 初始化验证对象</span></span><br><span class="line"><span class="keyword">let</span> linter = <span class="keyword">new</span> Linter();</span><br><span class="line"><span class="comment">// 映入规则</span></span><br><span class="line">linter.defineRules(&#123;</span><br><span class="line">	<span class="string">"myrule"</span>: <span class="built_in">require</span>(<span class="string">'./myrule'</span>), <span class="comment">// 引入js 文件</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 开始验证</span></span><br><span class="line"><span class="keyword">let</span> messages = linter.verify(code, CONFIG);</span><br></pre></td></tr></table></figure>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>ESLint 还能结合各类编辑器 vscode <a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" rel="noopener">插件</a> , WebStorm <a href="https://plugins.jetbrains.com/plugin/7494-eslint" target="_blank" rel="noopener">插件</a> ,可以结合自己的需要，发挥想象力。<a href="https://eslint.bootcss.com/docs/user-guide/integrations/" target="_blank" rel="noopener">官方介绍</a></p>
+
+            </div>
+
+            <!-- Comments -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+
+
+            </div>
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="mailto:hellozhengjia@gmail.com" class="email-icon">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://weibo.com/u/1977979711" class="weibo-icon" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100010731420573" class="facebook-icon" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/zhengweijia" class="github-icon" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">
+                    <a href="http://www.miibeian.gov.cn/" target="_blank"><span>京ICP备16020848号</span></a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/blog/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQ672F"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TQ672F');</script>
+    <!-- End Google Tag Manager -->
+</body>
+
+</html>

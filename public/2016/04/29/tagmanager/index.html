@@ -134,19 +134,19 @@
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h1 id="Tagmanager-google-入门和一次实践"><a href="#Tagmanager-google-入门和一次实践" class="headerlink" title="Tagmanager.google 入门和一次实践"></a>Tagmanager.google 入门和一次实践</h1><h2 id="相关网址："><a href="#相关网址：" class="headerlink" title="相关网址："></a>相关网址：</h2><ul>
-<li><a href="https://analytics.google.com" target="_blank" rel="external">https://analytics.google.com</a> 查看 google 统计数据，各种设置，<a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/#the_javascript_tracking_snippet" target="_blank" rel="external">官方文档</a>  </li>
-<li><a href="https://tagmanager.google.com" target="_blank" rel="external">https://tagmanager.google.com</a> tagmanager 用来配置页面的统计代码，<a href="https://support.google.com/tagmanager/?hl=zh-Hans#topic=3441530" target="_blank" rel="external">官方文档</a></li>
+<li><a href="https://analytics.google.com" target="_blank" rel="noopener">https://analytics.google.com</a> 查看 google 统计数据，各种设置，<a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/#the_javascript_tracking_snippet" target="_blank" rel="noopener">官方文档</a>  </li>
+<li><a href="https://tagmanager.google.com" target="_blank" rel="noopener">https://tagmanager.google.com</a> tagmanager 用来配置页面的统计代码，<a href="https://support.google.com/tagmanager/?hl=zh-Hans#topic=3441530" target="_blank" rel="noopener">官方文档</a></li>
 </ul>
 <h2 id="tagmanager-说明："><a href="#tagmanager-说明：" class="headerlink" title="tagmanager 说明："></a>tagmanager 说明：</h2><p>tagmanager 是谷歌提供的一个针对统计代码的进行管理的工具。</p>
-<p>例如你接到一个紧急需求，需要在监控一个按钮的点击量，产品说：“赶紧上，不上不上中国人，十分钟我要看到结果”，这时候我翻身而起，拿起菜刀，oh，不，是熟练的打开 <a href="https://atom.io/" target="_blank" rel="external">Atom</a> 找到代码，balabala….一通操作，看看时间，还有两分钟，我赶紧找人把代码推到测试环境，测试才刚开始，产品一个电话过来：“咋样啊，大神”，“再给我五分钟，一····一···一定搞定”，然后你一脸懵逼的等测试，交给运维上线。整个过程持续了半小时，这时候你忽然发现有个逻辑漏掉了，呵呵，你会有点怀疑人生···</p>
+<p>例如你接到一个紧急需求，需要在监控一个按钮的点击量，产品说：“赶紧上，不上不上中国人，十分钟我要看到结果”，这时候我翻身而起，拿起菜刀，oh，不，是熟练的打开 <a href="https://atom.io/" target="_blank" rel="noopener">Atom</a> 找到代码，balabala….一通操作，看看时间，还有两分钟，我赶紧找人把代码推到测试环境，测试才刚开始，产品一个电话过来：“咋样啊，大神”，“再给我五分钟，一····一···一定搞定”，然后你一脸懵逼的等测试，交给运维上线。整个过程持续了半小时，这时候你忽然发现有个逻辑漏掉了，呵呵，你会有点怀疑人生···</p>
 <p>让我们总结一下，整个事件要经过：产品-&gt;开发-&gt;测试-&gt;运维，每次这种小需求都要涉及到几个人的合作，效率十分令人抓狂。既然有这么多不爽，接下来接介绍本文的主角，谷歌出品的 Tagmanager。</p>
 <h2 id="运作原理"><a href="#运作原理" class="headerlink" title="运作原理"></a>运作原理</h2><p>1、在你的页面引入在页面载入后加载 <code>googletagmanager.com/gtm.js</code> ，整个 Tagmanager 就是她啦。</p>
 <p>2、<code>gtm.js</code> 是根据你的配置动态生成的，注意，根据配置来生成，这就是最爽的地方了，我们可以随时改，随时生成新的。<code>gtm.js</code> 里面的代码就是各类关于统计的代码，例如加载 GA(google-analytics) 统计代码（gtm.js 负责执行如下代码）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(function(i, s, o, g, r, a, m) &#123;</span><br><span class="line">	i[&apos;GoogleAnalyticsObject&apos;] = r;</span><br><span class="line">    i[r] = i[r] || function() &#123;</span><br><span class="line">    	(i[r].q = i[r].q || []).push(arguments)</span><br><span class="line">   	&#125;, i[r].l = 1 * new Date();</span><br><span class="line">    a = s.createElement(o),</span><br><span class="line">    m = s.getElementsByTagName(o)[0];</span><br><span class="line">    a.async = 1;</span><br><span class="line">    a.src = g;</span><br><span class="line">    m.parentNode.insertBefore(a, m)</span><br><span class="line">&#125;)(window, document, &apos;script&apos;, &apos;//www.google-analytics.com/analytics.js&apos;, &apos;ga&apos;);</span><br><span class="line">  ga(&apos;create&apos;, &apos;UA-1234567-1&apos;, &apos;auto&apos;);</span><br></pre></td></tr></table></figure>
-<p>3、既然这么好用，去哪里配置呢，<a href="https://tagmanager.google.com" target="_blank" rel="external">tagmanager.google.com</a> 需要科学上网。</p>
+<p>3、既然这么好用，去哪里配置呢，<a href="https://tagmanager.google.com" target="_blank" rel="noopener">tagmanager.google.com</a> 需要科学上网。</p>
 <h2 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h2><p>本段都使用 google-analytics 做为载体，来展示例子，所以需要你对 google-analytics 有一丁点了解即可。</p>
-<p>1、注册一个 <a href="https://tagmanager.google.com/" target="_blank" rel="external">tagmanager.google.com</a> 账户；</p>
-<p>2、<a href="https://tagmanager.google.com/#/home" target="_blank" rel="external">管理页面</a> 创建容器</p>
+<p>1、注册一个 <a href="https://tagmanager.google.com/" target="_blank" rel="noopener">tagmanager.google.com</a> 账户；</p>
+<p>2、<a href="https://tagmanager.google.com/#/home" target="_blank" rel="noopener">管理页面</a> 创建容器</p>
 <p><img src="./img/rongqi1.png" alt=""></p>
 <hr>
 <p> <img src="./img/rongqi2.png" alt=""></p>
@@ -189,7 +189,7 @@
 <p><img src="./img/preview.png" alt=""></p>
 <p>预览开启成功后，是这个样式的</p>
 <p><img src="./img/preview2.png" alt=""></p>
-<p>打开我们的页面，是这个损色的，推荐访问 <a href="http://www.smalldragonluo.com/" target="_blank" rel="external">www.smalldragonluo.com</a>，是一个很有趣的网站</p>
+<p>打开我们的页面，是这个损色的，推荐访问 <a href="http://www.smalldragonluo.com/" target="_blank" rel="noopener">www.smalldragonluo.com</a>，是一个很有趣的网站</p>
 <p><img src="./img/preview3.png" alt=""></p>
 <p>页面会出一个调试的窗口，里面会显示出当前执行了哪些 代码（tags），并且是在什么时候触发的，当我们写了一个比较复杂的逻辑并且出问题时，这些信息就能很快的帮我们定位到出问题的位置。图上显示，触发了“加载 GA”这个代码。</p>
 <p>让我们看看网络请求数据，用事实和疗效说话，如下图</p>
