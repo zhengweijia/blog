@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.9.0">
+<head><meta name="generator" content="Hexo 3.8.0">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--Description-->
-
-    
-
     
         <meta name="description" content="zhengxiaoerdd | zhengxioaer&#39;s blog | 郑佳 | 郑小二">
     
@@ -26,31 +23,12 @@
         <meta property="og:title" content="使用 ES6 Proxy 代理的一些问题记录">
     
 
-    <!--Open Graph Description-->
-    
-        <meta property="og:description" content="zhengxiaoerdd | zhengxioaer&#39;s blog | 郑佳 | 郑小二">
-    
-
     <!--Open Graph Site Name-->
-        <meta property="og:site_name" content="$">
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="article">
-    
+    <meta property="og:site_name" content="$">
 
     <!--Page Cover-->
     
-    
-        <meta property="og:image" content="http://zhengxiaoer.cn/bloghttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
-    
-
-        <meta name="twitter:card" content="summary_large_image">
-
-    
-
-    
-        <meta name="twitter:image" content="http://zhengxiaoer.cn/bloghttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
+        <meta property="og:image" content="undefined">
     
 
     <!-- Title -->
@@ -58,35 +36,31 @@
     <title>使用 ES6 Proxy 代理的一些问题记录 - $</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/blog/css/style.css">
 
     <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet">
 
     <!-- Google Analytics -->
     
 
 
-    <!-- favicon -->
-    
-
 </head>
-
 
 <body>
 
@@ -102,7 +76,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/blog/">Configurable Title</a>
+            <a class="navbar-brand" href="/blog/">LIVING</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -110,43 +84,11 @@
             <ul class="nav navbar-nav navbar-right">
                 
                     <li>
-                        <a href="/blog/">
-                            
-                                Home
-                            
-                        </a>
+                        <a href="/blog/">Home</a>
                     </li>
                 
                     <li>
-                        <a href="/blog/archives">
-                            
-                                Archives
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/blog/tags">
-                            
-                                Tags
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/blog/categories">
-                            
-                                Categories
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
-                            
-                                <i class="fa fa-github fa-stack-2x"></i>
-                            
-                        </a>
+                        <a href="/blog/archives">Archives</a>
                     </li>
                 
             </ul>
@@ -170,9 +112,7 @@
                     <span class="meta">
                         <!-- Date and Author -->
                         
-                        
-                            2018-12-04
-                        
+                        2018-12-04
                     </span>
                 </div>
             </div>
@@ -208,7 +148,7 @@
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h1 id="使用-ES6-Proxy-代理的一些问题记录"><a href="#使用-ES6-Proxy-代理的一些问题记录" class="headerlink" title="使用 ES6 Proxy 代理的一些问题记录"></a>使用 ES6 Proxy 代理的一些问题记录</h1><p>最近在项目里使用了 Proxy，遇到一些问题记录一下</p>
-<h3 id="Proxy-简介"><a href="#Proxy-简介" class="headerlink" title="Proxy 简介"></a>Proxy 简介</h3><p>简单来说 Proxy 是对<code>对象</code>设置一个拦截，直接上代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    attr: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 对 obj 进行拦截</span></span><br><span class="line">obj = <span class="keyword">new</span> <span class="built_in">Proxy</span>(obj, &#123;</span><br><span class="line">  <span class="keyword">get</span>: function (target, key, receiver) &#123;</span><br><span class="line">    <span class="comment">//如果 obj 有这个属性，则直接返回</span></span><br><span class="line">    <span class="keyword">if</span>(key <span class="keyword">in</span> target) &#123;</span><br><span class="line">        <span class="keyword">return</span> target[key];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">//如果 obj 没有这个属性，则统一返回 '没有这个值'</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'没有这个值'</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">set</span>: function (target, key, value, receiver) &#123;</span><br><span class="line">    <span class="comment">// 想设置对象属性，直接返回（不让设置）</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.attr); <span class="comment">// 输出 1</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.abc); <span class="comment">// 输出 '没有这个值', </span></span><br><span class="line"></span><br><span class="line">obj.attr = <span class="number">2</span>;<span class="comment">//</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.attr); <span class="comment">// 输出 1, 不能设置对象属性</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Proxy-简介"><a href="#Proxy-简介" class="headerlink" title="Proxy 简介"></a>Proxy 简介</h3><p>简单来说 Proxy 是对<code>对象</code>设置一个拦截，直接上代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    attr: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 对 obj 进行拦截</span></span><br><span class="line">obj = <span class="keyword">new</span> <span class="built_in">Proxy</span>(obj, &#123;</span><br><span class="line">  get: <span class="function"><span class="keyword">function</span> (<span class="params">target, key, receiver</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//如果 obj 有这个属性，则直接返回</span></span><br><span class="line">    <span class="keyword">if</span>(key <span class="keyword">in</span> target) &#123;</span><br><span class="line">        <span class="keyword">return</span> target[key];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">//如果 obj 没有这个属性，则统一返回 '没有这个值'</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'没有这个值'</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  set: <span class="function"><span class="keyword">function</span> (<span class="params">target, key, value, receiver</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 想设置对象属性，直接返回（不让设置）</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.attr); <span class="comment">// 输出 1</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.abc); <span class="comment">// 输出 '没有这个值', </span></span><br><span class="line"></span><br><span class="line">obj.attr = <span class="number">2</span>;<span class="comment">//</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.attr); <span class="comment">// 输出 1, 不能设置对象属性</span></span><br></pre></td></tr></table></figure></p>
 <p>可以进行的拦截类型不止 <code>get, set</code>，还有很多，例如：（来自<a href="http://es6.ruanyifeng.com/#docs/proxy" target="_blank" rel="noopener">阮一峰老师的书 ES6 Proxy</a>）：</p>
 <ul>
 <li>set(target, propKey, value, receiver)：拦截对象属性的设置，比如proxy.foo = v或proxy[‘foo’] = v，返回一个布尔值。</li>
@@ -225,32 +165,28 @@
 </ul>
 <p>如上这些都是介绍都是直接拷贝的 <a href="http://es6.ruanyifeng.com/#docs/proxy" target="_blank" rel="noopener">阮一峰老师的书 ES6 Proxy</a></p>
 <h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><h4 id="对原生的浏览器-HTMLElement-对象进行拦截"><a href="#对原生的浏览器-HTMLElement-对象进行拦截" class="headerlink" title="对原生的浏览器 HTMLElement 对象进行拦截"></a>对原生的浏览器 HTMLElement 对象进行拦截</h4><p>1、拦截时的 <code>this</code> 指向问题 <a href="http://es6.ruanyifeng.com/#docs/proxy#this-%E9%97%AE%E9%A2%98" target="_blank" rel="noopener">阮老师书里也有提及</a></p>
-<p>在拦截方法里，<code>this</code> 指向 Proxy 对象，所以在调用原对象的方法时，需要注意，直接看代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> div = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>); <span class="comment">// 随便拿一个页面的 div, 对他进行代理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一种代理方法</span></span><br><span class="line"><span class="keyword">let</span> divProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(div, &#123;</span><br><span class="line">  <span class="keyword">get</span>: function (target, key, receiver) &#123;</span><br><span class="line">    <span class="comment">// 访问这个 div 的任何属性，都直接返回</span></span><br><span class="line">    <span class="keyword">return</span> target[key];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 调用 div 的 querySelector 方法，拿他下边的 a 标签</span></span><br><span class="line"><span class="built_in">console</span>.log(divProxy.querySelector(<span class="string">'a'</span>)); <span class="comment">// chrome 上会报错：Uncaught TypeError: Illegal invocation</span></span><br></pre></td></tr></table></figure></p>
+<p>在拦截方法里，<code>this</code> 指向 Proxy 对象，所以在调用原对象的方法时，需要注意，直接看代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> div = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>); <span class="comment">// 随便拿一个页面的 div, 对他进行代理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一种代理方法</span></span><br><span class="line"><span class="keyword">let</span> divProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(div, &#123;</span><br><span class="line">  get: <span class="function"><span class="keyword">function</span> (<span class="params">target, key, receiver</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 访问这个 div 的任何属性，都直接返回</span></span><br><span class="line">    <span class="keyword">return</span> target[key];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 调用 div 的 querySelector 方法，拿他下边的 a 标签</span></span><br><span class="line"><span class="built_in">console</span>.log(divProxy.querySelector(<span class="string">'a'</span>)); <span class="comment">// chrome 上会报错：Uncaught TypeError: Illegal invocation</span></span><br></pre></td></tr></table></figure></p>
 <p>如上的代码，猜测因为 querySelector 方法内部有访问 <code>this</code> 指向，导致报错。修改为如下代码，则可以修复这个问题：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> div = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>); <span class="comment">// 随便拿一个页面的 div, 对他进行代理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种代理方法</span></span><br><span class="line"><span class="keyword">let</span> divProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(div, &#123;</span><br><span class="line">  <span class="keyword">get</span>: function (target, key, receiver) &#123;</span><br><span class="line">    <span class="keyword">if</span>( !!target[key] &amp;&amp; !!target[key].bind) &#123;</span><br><span class="line">        <span class="comment">// 使用 bind 绑定 this 指向</span></span><br><span class="line">        <span class="keyword">return</span> target[key].bind(target);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> target[key];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(divProxy.querySelector(<span class="string">'a'</span>)); <span class="comment">// &lt;a href='https://t.tt'&gt;来买呀&lt;/a&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> div = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>); <span class="comment">// 随便拿一个页面的 div, 对他进行代理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种代理方法</span></span><br><span class="line"><span class="keyword">let</span> divProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(div, &#123;</span><br><span class="line">  get: <span class="function"><span class="keyword">function</span> (<span class="params">target, key, receiver</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( !!target[key] &amp;&amp; !!target[key].bind) &#123;</span><br><span class="line">        <span class="comment">// 使用 bind 绑定 this 指向</span></span><br><span class="line">        <span class="keyword">return</span> target[key].bind(target);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> target[key];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(divProxy.querySelector(<span class="string">'a'</span>)); <span class="comment">// &lt;a href='https://t.tt'&gt;来买呀&lt;/a&gt;</span></span><br></pre></td></tr></table></figure>
 <p>另外还有一个问题，通过代理设置对象属性时，也会有问题相同的，看代码吧<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> div = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>);</span><br><span class="line"><span class="keyword">let</span> divProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(div, &#123;&#125;);</span><br><span class="line"><span class="comment">// 设置 div 的 innerHTML 属性，设置对象属性默认其实是调用 `div.innerHTML.__defineSetter__` 方法</span></span><br><span class="line">divProxy.innerHTML = <span class="string">'&lt;a href="https://t.tt"&gt;来买呀&lt;/a&gt;'</span>; <span class="comment">//chrome 报错： Uncaught TypeError: Illegal invocation</span></span><br></pre></td></tr></table></figure></p>
-<p>直接上解决办法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> div = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>); </span><br><span class="line"><span class="keyword">let</span> divProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(div, &#123;</span><br><span class="line">    <span class="comment">// 拦截所有的 set 行为</span></span><br><span class="line">    <span class="keyword">set</span>: function (target, key, value, receiver) &#123;</span><br><span class="line">        <span class="keyword">if</span>(key <span class="keyword">in</span> target) &#123;</span><br><span class="line">            target[key] = value; <span class="comment">// 直接调用原对象属性进行设置（target[key]）</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">divProxy.innerHTML = <span class="string">'&lt;a href="https://t.tt"&gt;来买呀&lt;/a&gt;'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>直接上解决办法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> div = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>); </span><br><span class="line"><span class="keyword">let</span> divProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(div, &#123;</span><br><span class="line">    <span class="comment">// 拦截所有的 set 行为</span></span><br><span class="line">    set: <span class="function"><span class="keyword">function</span> (<span class="params">target, key, value, receiver</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(key <span class="keyword">in</span> target) &#123;</span><br><span class="line">            target[key] = value; <span class="comment">// 直接调用原对象属性进行设置（target[key]）</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">divProxy.innerHTML = <span class="string">'&lt;a href="https://t.tt"&gt;来买呀&lt;/a&gt;'</span>;</span><br></pre></td></tr></table></figure></p>
 <h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>一般 <code>Proxy</code> 会和 <code>Reflect</code> 一起使用，本文不做介绍了，直接上<a href="http://es6.ruanyifeng.com/#docs/reflect" target="_blank" rel="noopener">阮老师的书</a>；</p>
 <p>JavaScript 的语法越来越规范，之前的一些坑，新的标准规范也开始慢慢填，加上<code>babel</code>的普及使用，我们可以多多拥抱新语法、特性，简洁代码，愉悦自己。</p>
 
-
-                
             </div>
 
             <!-- Comments -->
-            
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
 
 
-                </div>
-            
+            </div>
         </div>
     </div>
 </article>
 
     <!-- Footer -->
-    <hr />
+    <hr>
 
 <!-- Footer -->
 <footer>
@@ -258,29 +194,43 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ul class="list-inline text-center">
-                    
-
-                    
-
-                    
-                        <li>
-                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
-
-                    
-
-                    
-
-
+                    <li>
+                        <a href="mailto:hellozhengjia@gmail.com" class="email-icon">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://weibo.com/u/1977979711" class="weibo-icon" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100010731420573" class="facebook-icon" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/zhengweijia" class="github-icon" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
                 </ul>
-                <p class="copyright text-muted">&copy; 2020 郑小二<br></p>
-                <a href="http://beian.miit.gov.cn/" target="_blank"><span>京ICP备16020848号</span></a>
+                <p class="copyright text-muted">
+                    <a href="http://beian.miit.gov.cn/" target="_blank"><span>京ICP备16020848号</span></a>
+                </p>
+
             </div>
         </div>
     </div>
@@ -290,18 +240,26 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
-<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="/blog/js/jquery.min.js"></script>
 
 <!-- Bootstrap -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="/blog/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Gallery -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- Disqus Comments -->
 
 
-
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQ672F"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TQ672F');</script>
+    <!-- End Google Tag Manager -->
 </body>
 
 </html>
